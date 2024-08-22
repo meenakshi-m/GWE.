@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - GWE</title>
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: url('images/leave.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .profile-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .grievances-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .grievances-table th, .grievances-table td {
+            padding: 12px;
+            border: 1px solid #444;
+            text-align: left;
+        }
+
+        .grievances-table th {
+            background-color: #333;
+        }
+
+        .grievances-table td {
+            background-color: #222;
+        }
+
+        .grievances-table tr:nth-child(even) {
+            background-color: #333;
+        }
+
+        .grievances-table tr:hover {
+            background-color: #444;
+        }
+        /* GWE Logo Styling */
+        .gwe-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            line-height: 1; /* Ensure text doesn't break into multiple lines */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        .gwe-logo .dot {
+            color: #00b894; /* Green dot */
+        }
+
+        .header-logo {
+            width: auto; /* Adjust width to fit the logo */
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    <script>
+        // Check if the user is logged in
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    
+</head>
+<body id="top">
+    <!-- Header (same as the grievance page) -->
+    <header class="s-header">
+        <div class="header-logo">
+            <a href="index.html" class="gwe-logo">GWE<span class="dot">.</span></a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+                <ul class="header-nav__list">
+                    <li><a href="index.html" title="Home">Home</a></li>
+                    
+                    <li><a href="#" id="logoutButton" title="logout">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+    </header>
+
+    <div class="profile-container">
+        <h2>Your Submitted Grievances</h2>
+        <table class="grievances-table" id="grievancesTable">
+            <thead>
+                <tr>
+                    <th>Grievance</th>
+                    <th>Status</th>
+                    <th>Date Submitted</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Grievances will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Check if the user is logged in and redirect to login page if not
+        
+    
+        // Fetch user grievances from the API and display them in the table
+        async function fetchUserGrievances() {
+            const token = localStorage.getItem('token');
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/user-grievances', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+        
+                if (response.ok) {
+                    const { grievances } = await response.json();
+                    const tableBody = document.querySelector('#grievancesTable tbody');
+                    tableBody.innerHTML = ''; // Clear any existing content
+        
+                    grievances.forEach(grievance => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${grievance.grievance}</td>
+                            <td>${grievance.status}</td>
+                            <td>${new Date(grievance.createdAt).toLocaleDateString()}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else if (response.status === 401) {
+                    alert('Unauthorized: Please log in again.');
+                    localStorage.removeItem('token'); // Clear invalid token
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Error fetching grievances.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to fetch grievances.');
+            }
+        }
+        
+        // Fetch grievances on page load
+        document.addEventListener('DOMContentLoaded', fetchUserGrievances);
+    
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        });
+    </script>
+    
+    
+</body>
+</html>

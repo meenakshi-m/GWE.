@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Grievance - GWE</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Add this inside the <head> tag -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Script -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: url('images/leave.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .grievance-container {
+            background: rgba(0, 0, 0, 0.7); /* Transparent background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px; /* Offset for navbar */
+        }
+
+        .grievance-container h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .grievance-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            resize: vertical;
+        }
+
+        .grievance-container input[type="file"] {
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .grievance-container button {
+            background-color: #00b894;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .grievance-container button:hover {
+            background-color: #01977f;
+        }
+
+        /* GWE Logo Styling */
+        .gwe-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            line-height: 1; /* Ensure text doesn't break into multiple lines */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        .gwe-logo .dot {
+            color: #00b894; /* Green dot */
+        }
+
+        .header-logo {
+            width: auto; /* Adjust width to fit the logo */
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- Header -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a href="index.html" class="gwe-logo">GWE<span class="dot">.</span></a>
+        </div>
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+                
+                <ul class="header-nav__list">
+                    <li><a href="profile.html" title="Profile"><i class=""></i> Profile</a></li>
+                    <li><a href="index.html" title="Home">Home</a></li>
+                    <li><a href="#" id="logoutButton" title="logout">Logout</a></li> <!-- Logout Button -->
+                </ul>
+
+                <p>Our platform allows you to submit and track grievances with ease, ensuring timely resolution and satisfaction.</p>
+
+                <ul class="header-nav__social">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </li>
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav>  <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+    <!-- Grievance Form -->
+    <div class="grievance-container">
+        <h2>Submit Your Grievance</h2>
+        <form id="grievanceForm" method="post" action="http://localhost:5000/api/grievances" enctype="multipart/form-data">
+            <textarea name="grievance" id="grievance" placeholder="Describe your grievance" rows="10" required></textarea>
+            <input type="file" name="supportingDocument" id="supportingDocument" />
+            <button type="submit">Submit Grievance</button>
+        </form>
+    </div>
+    
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Check if the user is logged in when the page loads
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('You must be logged in to submit a grievance.');
+            window.location.href = "login.html"; // Redirect to login page if not logged in
+        }
+
+        // Handle grievance form submission
+        document.getElementById('grievanceForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(this); // Automatically collects form data
+
+            try {
+                const response = await fetch('http://localhost:5000/api/grievances', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message);
+                    this.reset(); // Reset form fields
+                    // Show a message or perform another action
+                } else {
+                    alert(`Error: ${data.message}`);
+                    if (response.status === 401) {
+                        localStorage.removeItem('token'); // Clear invalid token
+                        window.location.href = "login.html"; // Redirect to login page
+                    }
+                }
+            } catch (error) {
+                console.error('Error submitting grievance:', error);
+                alert('An unexpected error occurred. Please try again later.');
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            localStorage.removeItem('token'); // Remove the token from local storage
+            window.location.href = "login.html"; // Redirect to the login page
+        });
+
+        // Handle logo click to scroll to top
+        document.querySelector('.gwe-logo').addEventListener('click', function(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

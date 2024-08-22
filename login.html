@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GWE</title>
+    <!-- Add this inside the <head> tag -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        /* Styling the main container */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Styling the login container */
+        .login-container {
+            background: rgba(0, 0, 0, 0.85); /* Darker with more opacity */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Heading styling */
+        .login-container h2 {
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+
+        /* Input field style */
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: #333; /* Dark input field background */
+            color: #fff; /* White text for contrast */
+            font-size: 16px; /* Ensure input text is easily readable */
+        }
+
+        /* Button style */
+        .login-container button {
+            background-color: #00b894;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #01977f;
+        }
+
+        /* Additional text and links */
+        .login-container p {
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            margin-top: 1rem;
+        }
+
+        .login-container p a {
+            color: #00b894;
+            text-decoration: none;
+        }
+
+        .login-container p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social login buttons */
+        .social-login {
+            margin-top: 2rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .social-buttons button {
+            background: #444; /* Dark background for social buttons */
+            border: none;
+            padding: 10px 0;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            width: 48%;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-buttons button img {
+            height: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .social-buttons button:hover {
+            background: #555; /* Slightly lighter on hover */
+        }
+
+        /* Success message styling */
+        .success-message {
+            color: #00b894;
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: none; /* Hidden by default */
+        }
+        /* GWE Logo Styling */
+        .gwe-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            line-height: 1; /* Ensure text doesn't break into multiple lines */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        .gwe-logo .dot {
+            color: #00b894; /* Green dot */
+        }
+
+        .header-logo {
+            width: auto; /* Adjust width to fit the logo */
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+     <!-- Header -->
+     <header class="s-header">
+        <div class="header-logo">
+            <a href="index.html" class="gwe-logo">GWE<span class="dot">.</span></a>
+        </div>
+    </header> 
+
+    <section id="login" class="s-home target-section" data-parallax="scroll" data-image-src="images/leave.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+        <div class="main-container">
+            <div class="login-container">
+                <h2>LOGIN</h2>
+                <div class="success-message" id="successMessage">You are logged in!</div>
+                <form id="loginForm">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your Email" required />
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password" required />
+
+                    <button type="submit">LOGIN</button>
+                </form>
+                <p>Don’t have an account yet? <a href="index.html">Sign Up</a></p>
+                <div class="social-login">
+                    <p>or login with</p>
+                    <div class="social-buttons">
+                        <button class="google-btn">
+                            <img src="images/google.png" alt="Google" />Google
+                        </button>
+                        <button class="facebook-btn">
+                            <img src="images/facebook.jpg" alt="Facebook" />Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('loginForm').onsubmit = function(event) {
+            event.preventDefault(); // Prevent the default form submission
+        
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+        
+            fetch('http://localhost:5000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Save the token and admin status
+                    localStorage.setItem('token', data.token);
+        
+                    // Redirect based on admin status
+                    if (data.isAdmin) {
+                        window.location.href = "admin_dashboard.html"; // Redirect to admin dashboard
+                    } else {
+                        window.location.href = "index.html"; // Redirect to user home page
+                    }
+                } else {
+                    alert(data.message); // Use an alert to display the error message
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.'); // Use an alert to display the error message
+            });
+        };
+        
+    </script>
+    
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

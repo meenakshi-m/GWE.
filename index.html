@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>GWE - Grievance Web Application</title>
+    <meta name="description" content="A platform for managing and tracking grievances efficiently">
+    <meta name="author" content="GWE Team">
+    <!-- Add this inside the <head> tag -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* GWE Logo Styling */
+        /* Updated GWE Logo Styling */
+        .gwe-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            line-height: 1; /* Ensure text doesn't break into multiple lines */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        .gwe-logo .dot {
+            color: #00b894; /* Green dot */
+        }
+
+        .header-logo {
+            width: auto; /* Adjust width to fit the logo */
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+        <div class="header-logo">
+            <a href="index.html" class="gwe-logo">GWE<span class="dot">.</span></a>
+        </div>
+    
+        <nav class="header-nav">
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+    
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+                <ul class="header-nav__list">
+                    <!-- Static navigation items -->
+                    <li><a class="smoothscroll" href="#home" title="Home">Home</a></li>
+                    <li><a class="smoothscroll" href="#about" title="About">About</a></li>
+                    <li><a class="smoothscroll" href="#services" title="Services">Services</a></li>
+                    <li><a class="smoothscroll" href="#grievanceSection" title="works">Submit Grievance</a></li>    
+                    <!-- These will be dynamically updated -->
+                    <li id="auth-links"></li>
+                </ul>
+                <p>Our platform allows you to submit and track grievances with ease, ensuring timely resolution and satisfaction.</p>
+    
+                <ul class="header-nav__social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                </ul>
+            </div> <!-- end header-nav__content -->
+        </nav> <!-- end header-nav -->
+    
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/leave.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+        <div class="overlay"></div>
+        <div class="shadow-overlay"></div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+
+                <h3>Welcome to GWE</h3>
+
+                <h1>
+                    We simplify grievance management <br>
+                    for efficient resolution and <br>
+                    seamless user experiences.
+                </h1>
+
+            </div>
+
+            <div class="home-content__buttons">
+                <a href="#contact" class="smoothscroll btn btn--stroke">
+                    Register Now
+                </a>
+                <a href="#about" class="smoothscroll btn btn--stroke">
+                    Learn More
+                </a>
+            </div>
+
+            <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    <span>Scroll Down</span>
+                </a>
+            </div>
+
+            <div class="home-content__line"></div>
+
+        </div> <!-- end home-content -->
+
+
+        <ul class="home-social">
+            <li>
+                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
+            </li>
+        </ul>
+        <!-- end home-social -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- about
+    ================================================== -->
+    <section id='about' class="s-about">
+
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead subhead--dark">About Us</h3>
+                <h1 class="display-1 display-1--light">We Are GWE</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row about-desc" data-aos="fade-up">
+            <div class="col-full">
+                <p>
+                    GWE is an innovative platform designed to streamline the grievance submission and tracking process. Our mission is to empower users by providing a simple, efficient, and transparent way to manage grievances.
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+        <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
+
+            <div class="col-block stats__col ">
+                <div class="stats__count">127</div>
+                <h5>Awards Received</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">1505</div>
+                <h5>Cups of Coffee</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">109</div>
+                <h5>Grievances Resolved</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">102</div>
+                <h5>Happy Users</h5>
+            </div>
+
+        </div> <!-- end about-stats -->
+
+        <div class="about__line"></div>
+
+    </section> <!-- end s-about -->
+
+
+    <!-- services
+    ================================================== -->
+    <section id='services' class="s-services">
+
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">What We Offer</h3>
+                <h1 class="display-2">Key Features of Our Grievance Web Application</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row services-list block-1-2 block-tab-full">
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-earth"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">User Registration</h3>
+                    <p>Secure and straightforward registration process that allows users to create their accounts and access the grievance management system.</p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-group"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Grievance Submission</h3>
+                    <p>Easily submit grievances with detailed descriptions and upload any necessary documents to support the complaint.</p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-lego-block"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Grievance Tracking</h3>
+                    <p>Monitor the status of your submitted grievances in real-time, ensuring transparency and timely updates.</p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-paint-brush"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">User-Friendly Interface</h3>
+                    <p>A clean, intuitive interface designed to make the grievance management process as simple as possible for all users.</p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon"><i class="icon-megaphone"></i></div>
+                <div class="service-text">
+                    <h3 class="h2">Notifications & Alerts</h3>
+                    <p>Stay informed with notifications and alerts about the progress and updates on your grievances.</p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-cube"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Resolution Management</h3>
+                    <p>Efficient resolution process to address grievances promptly, ensuring user satisfaction.</p>
+                </div>
+            </div>
+
+        </div> <!-- end services-list -->
+
+    </section> <!-- end s-services -->
+
+
+    <!-- works (Submit Grievance Section)
+    ================================================== -->
+    <section id='grievanceSection' class="s-works">
+
+        <div class="intro-wrap">
+
+            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                <div class="col-full">
+                    <h3 class="subhead">Submit Your Grievance</h3>
+                    <h1 class="display-2 display-2--light">We are here to help you.</h1>
+                    <a href="grievance.html" class="btn btn--stroke">Grievance</a>
+                </div>
+            </div> <!-- end section-header -->
+
+        </div> <!-- end intro-wrap -->
+
+    </section> <!-- end s-works -->
+
+
+    <!-- clients (Login Section)
+    ================================================== -->
+    <section id="loginSection" class="s-clients">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Login</h3>
+                <h1 class="display-2">Access Your Account</h1>
+                <a href="login.html" class="btn btn--stroke">Login</a>
+            </div>
+        </div> <!-- end section-header -->
+
+    </section> <!-- end s-clients -->
+
+
+    <!-- contact (Register Section)
+    ================================================== -->
+    <section id="contact" class="s-contact">
+
+        <div class="overlay"></div>
+        <div class="contact__line"></div>
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Register</h3>
+                <h1 class="display-2 display-2--light">Join Us Today</h1>
+            </div>
+        </div>
+
+        <div class="row contact-content" data-aos="fade-up">
+            <div class="contact-primary">
+                <h3 class="h6">Sign Up</h3>
+
+                <form name="registerForm" id="registerForm" method="post" action="" novalidate="novalidate">
+                    <fieldset>
+                        <div class="form-field">
+                            <input name="username" type="text" id="username" placeholder="Username" required="" class="full-width">
+                        </div>
+                        <div class="form-field">
+                            <input name="email" type="email" id="email" placeholder="Your Email" required="" class="full-width">
+                        </div>
+                        <div class="form-field">
+                            <input name="password" type="password" id="password" placeholder="Password" required="" class="full-width">
+                        </div>
+                        <div class="form-field">
+                            <button type="submit" class="full-width btn--primary">Register</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <!-- contact-warning -->
+                <div class="message-warning">
+                    Something went wrong. Please try again.
+                </div>
+
+                <!-- contact-success -->
+                <div class="message-success">
+                    Registration successful!<br>
+                </div>
+            </div> <!-- end contact-primary -->
+
+            <div class="contact-secondary">
+                <div class="contact-info">
+
+                    <h3 class="h6 hide-on-fullwidth">Contact Info</h3>
+
+                    <div class="cinfo">
+                        <h5>Where to Find Us</h5>
+                        <p>
+                            1600 hiu..<br>
+                            M.......<br>
+                    
+                        </p>
+                    </div>
+
+                    <div class="cinfo">
+                        <h5>Email Us At</h5>
+                        <p>
+                            support@gwe.com<br>
+                            info@gwe.com
+                        </p>
+                    </div>
+
+                    <div class="cinfo">
+                        <h5>Call Us At</h5>
+                        <p>
+                            Phone: 2526528877<br>
+                            Mobile: 5566887799<br>
+                            
+                        </p>
+                    </div>
+
+                    <ul class="contact-social">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        </li>
+                    </ul> <!-- end contact-social -->
+
+                </div> <!-- end contact-info -->
+            </div> <!-- end contact-secondary -->
+
+        </div> <!-- end contact-content -->
+
+    </section> <!-- end s-contact -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <div class="row footer-main">
+
+            <div class="col-six tab-full left footer-desc">
+                Our platform ensures grievances are addressed promptly and effectively, making the process easy for users and administrators alike.
+            </div>
+
+            <div class="col-six tab-full right footer-subscribe">
+
+                <h4>Get Notified</h4>
+                <p>Subscribe to stay informed about the latest updates and features of our grievance management system.</p>
+
+                <div class="subscribe-form">
+                    <form id="mc-form" class="group" novalidate="true">
+                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                        <input type="submit" name="subscribe" value="Subscribe">
+                        <label for="mc-email" class="subscribe-message"></label>
+                    </form>
+                </div>
+
+            </div>
+
+        </div> <!-- end footer-main -->
+
+        <div class="row footer-bottom">
+
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>© Copyright GWE 2024</span>
+                   
+                </div>
+
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div> <!-- end footer-bottom -->
+
+    </footer> <!-- end footer -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById('registerForm').onsubmit = function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            fetch('http://localhost:5000/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector('.message-success').textContent = 'Registration successful! You can now log in using the login button.';
+                        document.querySelector('.message-success').style.display = 'block';
+                    } else {
+                        document.querySelector('.message-warning').textContent = data.message;
+                        document.querySelector('.message-warning').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.querySelector('.message-warning').textContent = 'An error occurred. Please try again.';
+                    document.querySelector('.message-warning').style.display = 'block';
+                });
+        };
+
+        // Handle scrolling for the GWE logo
+        document.querySelector('.gwe-logo').addEventListener('click', function(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the user is logged in
+            const token = localStorage.getItem('token'); // or another method you're using to store the token
+    
+            const authLinks = document.getElementById('auth-links');
+    
+            if (token) {
+                // User is logged in, show Profile and Logout
+                authLinks.innerHTML = `
+                    <li><a href="profile.html" title="Profile">Profile</a></li>
+                    <li><a href="#" id="logoutButton" title="Logout">Logout</a></li>
+                `;
+    
+                // Logout functionality
+                document.getElementById('logoutButton').addEventListener('click', function() {
+                    localStorage.removeItem('token');
+                    window.location.href = 'index.html'; // Redirect to the home page
+                });
+            } else {
+                // User is not logged in, show Login and Register
+                authLinks.innerHTML = `
+                    <li><a class="smoothscroll" href="#loginSection" title="login">Login</a></li>
+                    <li><a class="smoothscroll" href="#contact" title="Register">Register</a></li>
+                `;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

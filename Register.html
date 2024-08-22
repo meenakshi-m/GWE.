@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<section id="register" class="s-register target-section">
+    <div class="overlay"></div>
+    <div class="shadow-overlay"></div>
+
+    <div class="register-content">
+        <div class="row register-content__main">
+            <h3>Register</h3>
+            <form id="registerForm">
+                <div class="form-field">
+                    <input name="username" type="text" id="username" placeholder="Your Name" required>
+                </div>
+                <div class="form-field">
+                    <input name="email" type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-field">
+                    <input name="password" type="password" id="password" placeholder="Your Password" required>
+                </div>
+                <div class="form-field">
+                    <button class="btn--primary">Register</button>
+                </div>
+            </form>
+
+            <!-- Success message -->
+            <div class="message-success" style="display: none;">
+                Registration successful! Redirecting to login...
+            </div>
+
+            <!-- Warning message -->
+            <div class="message-warning" style="display: none;">
+                Something went wrong. Please try again.
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    document.getElementById('registerForm').onsubmit = function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Simulate form submission success
+        setTimeout(function() {
+            // Show success message
+            document.querySelector('.message-success').style.display = 'block';
+
+            // Redirect to login page after 2 seconds
+            setTimeout(function() {
+                window.location.href = "login.html"; // Redirect to login page
+            }, 2000);
+        }, 500); // Simulate server response time
+
+        // Hide any previous warning message
+        document.querySelector('.message-warning').style.display = 'none';
+    };
+</script>
+
+</body>
+</html>
