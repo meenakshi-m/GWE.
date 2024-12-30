@@ -107,4 +107,4 @@ Contact
 For any inquiries, please contact:
 
     Meenakshi M
-    Email: 2020meenakshi@example.com
+    Email: 2020meenakshim@gmail.com
